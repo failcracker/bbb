@@ -3,6 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routers import auth, users, absensi, admin
 import uvicorn
 
+app = FastAPI(title="Absensi Face Recognition API")
+
 # List origins (domain) yang diizinkan
 origins = [
     "https://frontend-mobilefacenet.vercel.app",
@@ -16,8 +18,6 @@ app.add_middleware(
     allow_methods=["*"],  # Mengizinkan semua metode (GET, POST, PUT, dll.)
     allow_headers=["*"],  # Mengizinkan semua header
 )
-
-app = FastAPI(title="Absensi Face Recognition API")
 
 app.include_router(auth.router, prefix="/auth", tags=["Auth"])
 app.include_router(users.router, prefix="/users", tags=["Users"])
