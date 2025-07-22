@@ -1,0 +1,473 @@
+{
+    "info": {
+        "name": "Absensi Face Recognition API (v2)",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/auth/login",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "auth",
+                                "login"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"yourpassword\"\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Users (Admin only)",
+            "item": [
+                {
+                    "name": "Create User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/users/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "users",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "username",
+                                    "value": "user1",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "nama",
+                                    "value": "Nama User",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "kode_karyawan",
+                                    "value": "K001",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "area",
+                                    "value": "Area 1",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "latitude",
+                                    "value": "-6.2",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "longitude",
+                                    "value": "106.8",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "radius",
+                                    "value": "100",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "role",
+                                    "value": "karyawan",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "password123",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "image",
+                                    "type": "file"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "List Users",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/users/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "users",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get User by ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/users/:user_id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "users",
+                                ":user_id"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update User",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/users/:user_id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "users",
+                                ":user_id"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"nama\": \"Nama Baru\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Delete User",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/users/:user_id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "users",
+                                ":user_id"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Absensi",
+            "item": [
+                {
+                    "name": "Absen (Datang/Pulang)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/absensi/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "absensi",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"latitude\": -6.2,\n  \"longitude\": 106.8,\n  \"tipe\": \"datang\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Absen Face (Datang/Pulang)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/absensi/face",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "absensi",
+                                "face"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"image_base64\": \"<base64_image>\",\n  \"latitude\": -6.2,\n  \"longitude\": 106.8,\n  \"tipe\": \"datang\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "List My Absensi",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/absensi/me",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "absensi",
+                                "me"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "List All Absensi (Admin)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/absensi/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "absensi",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Absensi by ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/absensi/:absensi_id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "absensi",
+                                ":absensi_id"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Admin",
+            "item": [
+                {
+                    "name": "Set Radius",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/admin/radius",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "admin",
+                                "radius"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"radius_meter\": 100\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Get Radius",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/admin/radius",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "admin",
+                                "radius"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Export Absensi PDF",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/admin/export/pdf",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "admin",
+                                "export",
+                                "pdf"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Export Absensi CSV",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/admin/export/csv",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "admin",
+                                "export",
+                                "csv"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Train Face (Stub)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/admin/face/training",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "admin",
+                                "face",
+                                "training"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

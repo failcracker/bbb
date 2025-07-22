@@ -1,0 +1,14 @@
+torch
+torchvision
+opencv-python
+numpy
+Pillow
+python-jose[cryptography]
+fastapi
+firebase_admin
+passlib
+uvicorn
+bcrypt
+PyJWT
+python-multipart
+reportlab
