@@ -11,12 +11,14 @@ origins = [
     "http://localhost",  # Tambahkan ini untuk development lokal
     "http://localhost:3000", # Contoh jika FE Anda berjalan di port 3000
 ]
+
+# HANYA UNTUK DEBUGGING!
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],  # Mengizinkan semua metode (GET, POST, PUT, dll.)
-    allow_headers=["*"],  # Mengizinkan semua header
+    allow_origins=["*"],
+    allow_credentials=True, # Jika ini True, "allow_origins" tidak bisa "*"
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.include_router(auth.router, prefix="/auth", tags=["Auth"])
